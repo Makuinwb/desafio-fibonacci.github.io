@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fibonacci & Primos · Seguridad Matemática</title>
+  <link rel="stylesheet" href="css/estilos.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ════════════════════════════════
+       PORTADA / ENCABEZADO
+       ════════════════════════════════ -->
+  <header class="hero">
+    <div class="hero__bg-grid" aria-hidden="true"></div>
+    <div class="hero__inner">
+      <div class="hero__eyebrow">Desafío Web · Matemáticas Aplicadas</div>
+      <h1 class="hero__title">
+        Fibonacci<br />
+        <em>&amp; Números Primos</em>
+      </h1>
+      <p class="hero__tagline">
+        Detectando claves criptográficas en la secuencia más famosa de la naturaleza
+      </p>
+      <div class="hero__pills">
+        <span class="pill">getElementById</span>
+        <span class="pill">Algoritmo Propio</span>
+        <span class="pill">Responsivo</span>
+        <span class="pill">Sin Librerías</span>
+      </div>
+    </div>
+    <div class="hero__scroll-hint" aria-hidden="true">↓</div>
+  </header>
+
+  <main>
+
+    <!-- ════════════════════════════════
+         SECCIÓN 1 · CONTEXTO DEL PROBLEMA
+         ════════════════════════════════ -->
+    <section class="section section--context" id="contexto">
+      <div class="container">
+        <div class="section-label">01 · Contexto</div>
+        <h2 class="section-title">¿Cuál es el problema real?</h2>
+        <div class="context-grid">
+          <div class="context-card context-card--main">
+            <p class="context-card__text">
+              En seguridad informática, los <strong>números primos</strong> son la base de los algoritmos 
+              de cifrado más importantes del mundo, como RSA. Para generar claves seguras se necesitan 
+              números primos grandes y difíciles de factorizar.
+            </p>
+            <p class="context-card__text">
+              La <strong>serie de Fibonacci</strong>, por su parte, aparece constantemente en la naturaleza: 
+              en la espiral de los girasoles, la concha del nautilo, la reproducción de conejos. Sus números 
+              crecen de forma exponencial, igual que lo hacen los datos en sistemas digitales.
+            </p>
+            <p class="context-card__text">
+              La pregunta interesante es: <em>¿cuántos números de Fibonacci son también números primos?</em> 
+              Estos "Fibonacci primos" son especialmente raros y valiosos en teoría de números y 
+              criptografía experimental.
+            </p>
+          </div>
+          <div class="context-stats">
+            <div class="stat-box">
+              <span class="stat-box__num">12</span>
+              <span class="stat-box__label">Fibonacci primos conocidos</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-box__num">RSA</span>
+              <span class="stat-box__label">Usa primos de 1024+ dígitos</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-box__num">∞</span>
+              <span class="stat-box__label">Fibonacci primos posibles (conjetura abierta)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════
+         SECCIÓN 2 · EXPLICACIÓN DEL ALGORITMO
+         ════════════════════════════════ -->
+    <section class="section section--algo" id="algoritmo">
+      <div class="container">
+        <div class="section-label">02 · Algoritmo</div>
+        <h2 class="section-title">¿Cómo funciona?</h2>
+        <div class="algo-grid">
+
+          <div class="algo-block">
+            <div class="algo-block__num">A</div>
+            <h3 class="algo-block__title">Serie de Fibonacci</h3>
+            <p class="algo-block__desc">
+              Cada número es la suma de los dos anteriores. Empezamos con 0 y 1, y el 
+              ciclo se repite tantas veces como términos pida el usuario.
+            </p>
+            <div class="code-snippet">
+              <pre>
+let a = 0, b = 1, c;
+for (let i = 2; i &lt;= n; i++) {
+  c = a + b;
+  a = b;
+  b = c;
+}</pre>
+            </div>
+          </div>
+
+          <div class="algo-block">
+            <div class="algo-block__num">B</div>
+            <h3 class="algo-block__title">Verificación de Primo</h3>
+            <p class="algo-block__desc">
+              Un número es primo si solo es divisible entre 1 y sí mismo. 
+              Contamos sus divisores: si hay exactamente 2, es primo.
+            </p>
+            <div class="code-snippet">
+              <pre>
+let contador = 0;
+for (let i = 1; i &lt;= num; i++) {
+  if (num % i === 0) contador++;
+}
+// Si contador == 2 → es primo</pre>
+            </div>
+          </div>
+
+          <div class="algo-block algo-block--full">
+            <div class="algo-block__num">C</div>
+            <h3 class="algo-block__title">Fibonacci Primos — La combinación</h3>
+            <p class="algo-block__desc">
+              Generamos toda la secuencia de Fibonacci hasta N términos, y por cada número 
+              verificamos si también es primo. Los que pasen ambas condiciones son los 
+              "Fibonacci Primos" — los candidatos especiales en criptografía.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════
+         SECCIÓN 3 · SIMULADOR PRINCIPAL
+         ════════════════════════════════ -->
+    <section class="section section--sim" id="simulador">
+      <div class="container">
+        <div class="section-label">03 · Simulador</div>
+        <h2 class="section-title">Ejecuta el análisis</h2>
+
+        <div class="sim-wrapper">
+
+          <!-- Formulario -->
+          <div class="sim-form-panel">
+            <p class="sim-form-panel__desc">
+              Ingresa cuántos términos de la serie de Fibonacci quieres analizar. 
+              El simulador generará la secuencia completa e identificará cuáles de 
+              esos números son también primos.
+            </p>
+
+            <form class="sim-form" id="form-fibonacci" novalidate>
+
+              <div class="form-group">
+                <label class="form-label" for="terminos">
+                  Cantidad de términos a analizar
+                </label>
+                <div class="form-control">
+                  <input
+                    class="form-input"
+                    type="number"
+                    id="terminos"
+                    name="terminos"
+                    placeholder="ej. 15"
+                    min="2"
+                    max="70"
+                    step="1"
+                    required
+                    aria-describedby="terminos-hint"
+                  />
+                  <span class="form-unit">términos</span>
+                </div>
+                <span class="form-hint" id="terminos-hint">
+                  Mínimo 2 · Máximo 70 (para evitar desbordamiento)
+                </span>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="modo">
+                  Modo de visualización
+                </label>
+                <div class="form-control">
+                  <select class="form-input form-select" id="modo" name="modo">
+                    <option value="todos">Mostrar toda la secuencia</option>
+                    <option value="soloprimos">Mostrar solo los primos</option>
+                  </select>
+                </div>
+              </div>
+
+              <button class="btn-ejecutar" type="button" id="btn-calcular" onclick="ejecutarSimulador()">
+                <span class="btn-ejecutar__text">Analizar secuencia</span>
+                <span class="btn-ejecutar__icon" aria-hidden="true">→</span>
+              </button>
+
+              <button class="btn-limpiar" type="button" onclick="limpiarSimulador()">
+                Limpiar resultados
+              </button>
+
+            </form>
+          </div>
+
+          <!-- Panel de resultados -->
+          <div class="sim-result-panel" id="panel-resultados">
+
+            <div class="result-empty" id="result-empty">
+              <div class="result-empty__icon">◎</div>
+              <p class="result-empty__text">El análisis aparecerá aquí</p>
+            </div>
+
+            <div class="result-content" id="result-content" style="display:none;">
+
+              <div class="result-summary" id="result-summary">
+                <!-- Rellenado por JS -->
+              </div>
+
+              <div class="result-sequence-wrapper">
+                <p class="result-sequence-title">Secuencia analizada</p>
+                <div class="result-sequence" id="result-sequence">
+                  <!-- Chips generados por JS -->
+                </div>
+                <div class="result-legend">
+                  <span class="chip chip--primo"></span> Fibonacci primo
+                  <span class="chip chip--normal"></span> Solo Fibonacci
+                </div>
+              </div>
+
+              <div class="result-primos-list" id="result-primos-list">
+                <!-- Rellenado por JS -->
+              </div>
+
+            </div>
+
+            <div class="result-error" id="result-error" style="display:none;">
+              <!-- Rellenado por JS -->
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════
+         SECCIÓN 4 · CONCLUSIÓN
+         ════════════════════════════════ -->
+    <section class="section section--conclusion" id="conclusion">
+      <div class="container">
+        <div class="section-label">04 · Conclusión</div>
+        <h2 class="section-title">¿Por qué importa esto?</h2>
+        <div class="conclusion-grid">
+          <div class="conclusion-block">
+            <div class="conclusion-block__icon">🔐</div>
+            <h3>Criptografía real</h3>
+            <p>
+              Los sistemas RSA que protegen tu banco, tu correo y tus contraseñas se 
+              basan en la dificultad de factorizar números primos grandes. Sin primos, 
+              no habría internet seguro.
+            </p>
+          </div>
+          <div class="conclusion-block">
+            <div class="conclusion-block__icon">🌿</div>
+            <h3>Naturaleza y matemática</h3>
+            <p>
+              Fibonacci no es solo un ejercicio académico. Es el patrón con el que 
+              crecen las plantas, se organizan las semillas y se construyen espirales 
+              en toda la naturaleza.
+            </p>
+          </div>
+          <div class="conclusion-block">
+            <div class="conclusion-block__icon">🔍</div>
+            <h3>Problema abierto</h3>
+            <p>
+              Hasta hoy, nadie ha podido demostrar si hay infinitos números que sean 
+              a la vez Fibonacci y primos. Es uno de los problemas abiertos más 
+              elegantes de las matemáticas.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <p>Fibonacci &amp; Números Primos · HTML5 · CSS3 · JavaScript puro</p>
+      <p class="footer__sub">document.getElementById · Sin librerías externas · Diseño responsivo</p>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
